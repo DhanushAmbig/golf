@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ln6ykr3p0s6a"]
+
+[ext_resource type="Script" uid="uid://qimlv75t08kk" path="res://scenes/camera_3d.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://b8xxk3ucbr2cm" path="res://scenes/golf_course.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://d2f11y0xqa4iy" path="res://scenes/ball.tscn" id="3_sugp2"]
+
+[sub_resource type="Environment" id="Environment_tbgi4"]
+background_mode = 1
+background_color = Color(3.9948522e-06, 0.6378639, 0.36100683, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.78431374, 0.8235294, 0.8627451, 1)
+ambient_light_energy = 0.4
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_sugp2"]
+
+[node name="Main" type="Node3D" unique_id=269114928]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1852150523]
+transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 1, 1)
+visible = false
+script = ExtResource("1_jyhfs")
+target = NodePath("../Ball")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=883291790]
+transform = Transform3D(0.70710677, 0.49999997, -0.49999997, 0, 0.70710677, 0.70710677, 0.70710677, -0.49999997, 0.49999997, 5, 10, 5)
+light_energy = 1.2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1957793943]
+environment = SubResource("Environment_tbgi4")
+
+[node name="GolfCourse" parent="." unique_id=1206652147 instance=ExtResource("2_0wfyh")]
+
+[node name="Ball" parent="." unique_id=1989116931 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="GolfCourse2" parent="." unique_id=497767345 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -4.9)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2122498078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=764021673]
+shape = SubResource("WorldBoundaryShape3D_sugp2")

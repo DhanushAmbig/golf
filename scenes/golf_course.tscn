@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b8xxk3ucbr2cm"]
+
+[ext_resource type="PackedScene" uid="uid://bl12e78ghmfwi" path="res://assets/GLB format/straight.glb" id="1_kwe36"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb4in"]
+size = Vector3(1.0012207, 0.1, 1.0024414)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kwe36"]
+size = Vector3(0.2003479, 0.28155518, 1.9942017)
+
+[node name="GolfCourse" type="Node3D" unique_id=1206652147]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="straight2" parent="." unique_id=518061869 instance=ExtResource("1_kwe36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021064043, 1.4901161e-08, -0.0026414394)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="straight2" unique_id=552846146]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="straight2/StaticBody3D" unique_id=1692968361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0006698966, 0.014407858, -0.00020289421)
+visible = false
+shape = SubResource("BoxShape3D_wb4in")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="straight2/StaticBody3D" unique_id=150443928]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.44921112, 0.07359314, -0.0019073486)
+shape = SubResource("BoxShape3D_kwe36")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="straight2/StaticBody3D" unique_id=328923337]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.449, 0.074, -0.002)
+shape = SubResource("BoxShape3D_kwe36")
